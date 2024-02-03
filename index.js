@@ -1,7 +1,7 @@
 // Runs the application using imports from lib/
 const fs = require('fs');
 const inquirer = require('inquirer');
-const shapes = require('./lib/shapes.js');
+const {Triangle, Circle, Square} = require('./lib/shapes.js');
 
 inquirer
   .prompt([
@@ -12,12 +12,12 @@ inquirer
     },
     {
       type: 'input',
-      name: 'text-color',
+      name: 'textColor',
       message: 'What text color do you want the logo to have?',
     },
     {
         type: 'input',
-        name: 'background-color',
+        name: 'backgroundColor',
         message: 'What background color do you want the logo to have?',
     },
     {
@@ -28,10 +28,27 @@ inquirer
     },
   ])
   .then((data) => {
-    
+    let shape;
+    if (data.shape ==='circle'){
+        shape = new Circle(data.textColor, data.backgroundColor, data.text)
+    }
+    else if (data.shape ==='triangle'){
+        shape = new Triangle(data.textColor, data.backgroundColor, data.text)
+    }
+    else if (data.shape ==='square'){
+        shape = new Square(data.textColor, data.backgroundColor, data.text)
+    };
+    console.log('shape', shape)
+    const svgText = 
+    `
+    <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+        ${shape.render()}
+        <text x="150" y="150" text-anchor="middle" alignment-baseline="middle" fill="${shape.textColor}" font-size="40">${shape.text}</text>
+    </svg>
+    `;
 
 
-    fs.writeFile('logo.svg', JSON.stringify(data, null, '\t'), (err) =>
+    fs.writeFile('logo.svg', svgText, (err) =>
       err ? console.log(err) : console.log('Success! Review your logo in logo.svg')
     );
   });
