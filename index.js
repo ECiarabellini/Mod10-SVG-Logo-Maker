@@ -40,13 +40,10 @@ inquirer
     };
     console.log('shape', shape)
     const svgText = 
-    `
-    <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+    `<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
         ${shape.render()}
-        <text x="150" y="150" text-anchor="middle" alignment-baseline="middle" fill="${shape.textColor}" font-size="40">${shape.text}</text>
-    </svg>
-    `;
-
+        ${shape.renderText()}
+    </svg>`;
 
     fs.writeFile('logo.svg', svgText, (err) =>
       err ? console.log(err) : console.log('Success! Review your logo in logo.svg')

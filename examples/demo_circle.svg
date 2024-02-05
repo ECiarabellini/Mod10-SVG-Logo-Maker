@@ -1,4 +1,4 @@
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="150" cy="150" r="140" fill="green" />
-  <text x="150" y="150" text-anchor="middle" alignment-baseline="middle" fill="white" font-size="100">SVG</text>
-</svg>
+        <circle cx="150" cy="150" r="140" fill="pink" />
+        <text x="150" y="165" text-anchor="middle" alignment-baseline="middle" fill="green" font-size="91">WWW</text>
+    </svg>
